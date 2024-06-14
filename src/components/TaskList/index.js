@@ -7,6 +7,7 @@ import { removeTask } from '../../state/tasks.slice';
 const TaskList = () => {
     const dispatch = useDispatch();
     const tasks = useSelector(state => state.tasks.tasks);
+    //const tasks = [];
 
     const handleTaskRemove = (id) => {
         dispatch(removeTask(id));
@@ -28,9 +29,7 @@ const TaskList = () => {
                             onRemove={() => handleTaskRemove(task.id)}
                         />
                     ))
-
                     )
-
                 }
             </ListContainer>
         </CartArticle>

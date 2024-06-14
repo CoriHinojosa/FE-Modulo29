@@ -7,6 +7,7 @@ margin-bottom: 25px;
 const ProductsSection = styled.section`
 display: flex;
 gap: 15px;
+align-items: flex-end;
 `;
 
 const Input = styled.input`

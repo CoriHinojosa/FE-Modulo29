@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
     const response = await axios.get('https://fakestoreapi.com/products?limit=10');
-    return response.data.slice(0, 8);
+    return response.data.slice(0, 4);
 });
 
 const taskSlice = createSlice({
@@ -11,7 +11,7 @@ const taskSlice = createSlice({
     initialState: {
         tasks: [],
     },
-    
+
     reducers: {
         addTask: (state, action) => {
             state.tasks.push(action.payload);

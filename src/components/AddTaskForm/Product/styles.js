@@ -2,15 +2,8 @@ import styled from 'styled-components';
 
 const ProductArticle = styled.article`
 display: flex;
-flex-direction: row;
-flex-wrap: wrap;
-align-items: flex-end;
-gap: 20px;
-`;
-
-const ProductSingle = styled.section`
-display: flex;
 flex-direction: column;
+flex-wrap: wrap;
 align-items: center;
 `;
 
@@ -42,4 +35,4 @@ margin-bottom: 30px;
 cursor: pointer;
 `;
 
-export { ProductImg, ProductArticle, ProductH3, ProductP, ProductButton, ProductSingle };
+export { ProductImg, ProductArticle, ProductH3, ProductP, ProductButton };

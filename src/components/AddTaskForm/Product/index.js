@@ -1,41 +1,30 @@
 import { useEffect, useState } from "react";
 import { addTask, fetchTasks } from "../../../state/tasks.slice";
-import { ProductImg, ProductArticle, ProductH3, ProductP, ProductButton, ProductSingle } from "./styles";
+import { ProductImg, ProductArticle, ProductH3, ProductP, ProductButton } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
 
-const Product = ({ name, description, image, id }) => {
-        const tasks= useSelector(state => state.tasks.tasks);    
-        const [ formTask, setFormTask ] = useState('');
-        const dispatch = useDispatch();
-    
-        const handleAddTask = (title, price, id) => {
-            const newTask = {
-                id: id+Date.now(),
-                title: title,
-                price: price,
-            }
+const Product = ({id, image, name, price}) => {    
+    const dispatch = useDispatch();
 
-            dispatch(addTask(newTask));
-            setFormTask('');
+    const handleAddTask = () => {
+        const newTask = {
+            id: id + Date.now(),
+            title: name,
+            price: price,
+            image: image,
         };
-    
-        useEffect (() => {
-            dispatch(fetchTasks());
-        }, [dispatch])
-    
+
+        dispatch(addTask(newTask));
+    };
+
     return(
-            <ProductArticle>
-                {
-                    tasks.map(task => (
-                        <ProductSingle>
-                        <ProductImg src={task.image} />
-                        <ProductH3>{task.title}</ProductH3>
-                        <ProductP>${task.price}</ProductP>
-                        <ProductButton onClick={() => handleAddTask(task.title, task.price, task.id)}>
-                            Añadir Al Carrito </ProductButton>
-                        </ProductSingle>
-                    ))
-                }
+            <ProductArticle>                
+                    <ProductImg src={image} />
+                    <ProductH3>{name}</ProductH3>
+                    <ProductP>${price}</ProductP>
+                    <ProductButton onClick={handleAddTask}>
+                        Añadir Al Carrito
+                    </ProductButton>
             </ProductArticle>
     )
 }
